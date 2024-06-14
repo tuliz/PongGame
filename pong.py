@@ -4,3 +4,4 @@ class Pong(Turtle):
         super().__init__()
         self.color("white")
         self.shape("circle")
+        self.penup()
