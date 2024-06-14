@@ -1,4 +1,4 @@
-from turtle import Turtle
+from turtle import Turtle, Screen
 
 
 class Paddles(Turtle):
@@ -6,6 +6,7 @@ class Paddles(Turtle):
         super().__init__()
         self.parts = []
         self.speed('fastest')
+        self.screen = Screen()
 
     def build_paddles(self, x, y):
         for n in range(4):
@@ -20,4 +21,18 @@ class Paddles(Turtle):
                 new_part.goto(self.parts[n-1].xcor(), self.parts[n-1].ycor() - 20)
 
             self.parts.append(new_part)
+
+    def move_up(self):
+        if self.parts[0].heading != 90:
+            for part in self.parts:
+                part.setheading(90)
+                part.forward(10)
+            self.screen.update()
+
+    def move_down(self):
+        if self.parts[0].heading != 270:
+            for part in self.parts:
+                part.setheading(270)
+                part.forward(10)
+            self.screen.update()
 

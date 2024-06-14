@@ -9,7 +9,6 @@ screen = Screen()
 screen.bgcolor("black")
 screen.title("Pong Game")
 screen.tracer(0)
-screen.listen()
 
 #creating pc paddles
 pc = Paddles()
@@ -36,6 +35,10 @@ half.create_half()
 
 screen.update()
 
+#listeners for player paddle for moving it up and down
+screen.listen()
+screen.onkey(player.move_up, 'Up')
+screen.onkey(player.move_down, 'Down')
 
 
 screen.exitonclick()
