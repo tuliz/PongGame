@@ -13,10 +13,11 @@ screen.listen()
 
 #creating pc paddles
 pc = Paddles()
-pc.goto(-360, 0)
+pc.build_paddles(-360, 0)
+
 #creating player paddles
 player = Paddles()
-player.goto(360, 0)
+player.build_paddles(360, 0)
 
 #creating PC scoreboard
 pc_score = Scoreboard()
