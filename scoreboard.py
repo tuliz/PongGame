@@ -9,5 +9,5 @@ class Scoreboard(Turtle):
         self.hideturtle()
 
     def create_score(self):
-        self.write(f"{self.score}", align='center',font=('Ariel',12,'normal'))
+        self.write(f"{self.score}", align='center',font=('Times',50,'bold'))
 

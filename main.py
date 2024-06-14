@@ -2,10 +2,10 @@ from turtle import Screen
 from paddles import Paddles
 from pong import Pong
 from scoreboard import Scoreboard
+from half import Half
 
 #screen settings
 screen = Screen()
-screen.screensize(400, 400)
 screen.bgcolor("black")
 screen.title("Pong Game")
 screen.tracer(0)
@@ -20,16 +20,21 @@ player.goto(360, 0)
 
 #creating PC scoreboard
 pc_score = Scoreboard()
-pc_score.goto(-50,300)
+pc_score.goto(-50,260)
 pc_score.create_score()
 
 #creating Player scoreboard
 player_score = Scoreboard()
-player_score.goto(50,300)
+player_score.goto(50,260)
 player_score.create_score()
 
 ball = Pong()
 
+half = Half()
+half.create_half()
+
 screen.update()
+
+
 
 screen.exitonclick()
