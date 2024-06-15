@@ -26,7 +26,7 @@ class Paddles(Turtle):
         if self.parts[0].heading != 90 and self.parts[0].ycor() < 305:
             for part in self.parts:
                 part.setheading(90)
-                part.forward(10)
+                part.forward(20)
             self.screen.update()
 
     def move_down(self):
