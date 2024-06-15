@@ -14,11 +14,11 @@ screen.tracer(0)
 
 #creating pc paddles
 pc = Paddles()
-pc.build_paddles(-360, 0)
+pc.goto(-360, 0)
 
 #creating player paddles
 player = Paddles()
-player.build_paddles(360, 0)
+player.goto(360, 0)
 
 #creating PC scoreboard
 pc_score = Scoreboard()
@@ -51,10 +51,8 @@ while game_continue:
     time.sleep(0.1)
 
     #checking if the ball is having a collision with one of the paddles, if yes change the ball direction
-    if ball.xcor() > 345 or ball.xcor() < -345:
-        for n in range(4):
-            if ball.distance(player.parts[n]) < 20 or ball.distance(pc.parts[n]) < 20:
-                ball.change_direction()
+    if ball.distance(player) < 25 or ball.distance(pc) < 25:
+            ball.change_direction()
 
     #checking if the ball is passing the pc side paddle, if yes up the score for player
     if ball.xcor() > 362:

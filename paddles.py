@@ -4,35 +4,24 @@ from turtle import Turtle, Screen
 class Paddles(Turtle):
     def __init__(self):
         super().__init__()
-        self.parts = []
         self.speed('fastest')
+        self.shape('square')
+        self.color('white')
+        self.penup()
+        self.setheading(90)
+        self.shapesize(stretch_wid=1,stretch_len=7)
         self.screen = Screen()
 
-    def build_paddles(self, x, y):
-        for n in range(4):
-            new_part = Turtle('square')
-            new_part.color("white")
-            new_part.shape("square")
-            new_part.penup()
-            new_part.width(20)
-            if n == 0:
-                new_part.goto(x,y)
-            else:
-                new_part.goto(self.parts[n-1].xcor(), self.parts[n-1].ycor() - 20)
-
-            self.parts.append(new_part)
 
     def move_up(self):
-        if self.parts[0].heading != 90 and self.parts[0].ycor() < 305:
-            for part in self.parts:
-                part.setheading(90)
-                part.forward(20)
+        if self.heading != 90 and self.ycor() < 305:
+            self.setheading(90)
+            self.forward(20)
             self.screen.update()
 
     def move_down(self):
-        if self.parts[0].heading != 270 and self.parts[-1].ycor() > -300:
-            for part in self.parts:
-                part.setheading(270)
-                part.forward(20)
+        if self.heading != 270 and self.ycor() > -300:
+            self.setheading(270)
+            self.forward(20)
             self.screen.update()
 
