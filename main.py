@@ -49,14 +49,15 @@ screen.onkey(pc.move_up, 'w')
 while game_continue:
 
     ball.move()
-    screen.update()
     time.sleep(0.1)
+    screen.update()
 
-    if ball.ycor() > 300 or ball.ycor() < -300:
+    #check if ball is at top or bottom walls
+    if ball.ycor() > 280 or ball.ycor() < -280:
         ball.bounce()
 
     #checking if the ball is having a collision with one of the paddles, if yes change the ball direction
-    if ball.distance(player) < 25 or ball.distance(pc) < 25:
+    if (ball.distance(player) < 50 and ball.xcor() > 320) or (ball.distance(pc) < 50 and ball.xcor() < -320):
         ball.hit_paddle()
 
     #checking if the ball is passing the pc side paddle, if yes up the score for player

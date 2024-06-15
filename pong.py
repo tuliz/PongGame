@@ -5,6 +5,7 @@ class Pong(Turtle):
         super().__init__()
         self.color("white")
         self.shape("circle")
+        self.shapesize(stretch_len=20,stretch_wid=20)
         self.penup()
         self.shapesize(0.7)
         self.x_movement = 20
