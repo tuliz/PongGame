@@ -7,27 +7,25 @@ import time
 
 #screen settings
 screen = Screen()
-screen.screensize(400,400)
+screen.screensize(700,600)
 screen.bgcolor("black")
 screen.title("Pong Game")
 screen.tracer(0)
 
 #creating pc paddles
-pc = Paddles()
-pc.goto(-360, 0)
+pc = Paddles((-350, 0))
 
 #creating player paddles
-player = Paddles()
-player.goto(360, 0)
+player = Paddles((350, 0))
 
 #creating PC scoreboard
 pc_score = Scoreboard()
-pc_score.goto(-50,260)
+pc_score.goto(-50,250)
 pc_score.create_score()
 
 #creating Player scoreboard
 player_score = Scoreboard()
-player_score.goto(50,260)
+player_score.goto(50,250)
 player_score.create_score()
 
 ball = Pong()
@@ -39,10 +37,14 @@ game_continue = True
 
 screen.update()
 
-#listeners for player paddle for moving it up and down
+#listeners for paddles for moving it up and down
 screen.listen()
 screen.onkey(player.move_up, 'Up')
 screen.onkey(player.move_down, 'Down')
+screen.onkey(pc.move_down, 's')
+screen.onkey(pc.move_up, 'w')
+
+
 
 while game_continue:
 
@@ -50,9 +52,12 @@ while game_continue:
     screen.update()
     time.sleep(0.1)
 
+    if ball.ycor() > 300 or ball.ycor() < -300:
+        ball.bounce()
+
     #checking if the ball is having a collision with one of the paddles, if yes change the ball direction
     if ball.distance(player) < 25 or ball.distance(pc) < 25:
-            ball.change_direction()
+        ball.hit_paddle()
 
     #checking if the ball is passing the pc side paddle, if yes up the score for player
     if ball.xcor() > 362:
@@ -63,5 +68,6 @@ while game_continue:
     elif ball.xcor() < -362:
         player_score.score_up()
         ball.restart()
+
 
 screen.exitonclick()

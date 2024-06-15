@@ -2,12 +2,13 @@ from turtle import Turtle, Screen
 
 
 class Paddles(Turtle):
-    def __init__(self):
+    def __init__(self, location):
         super().__init__()
         self.speed('fastest')
         self.shape('square')
         self.color('white')
         self.penup()
+        self.goto(location)
         self.setheading(90)
         self.shapesize(stretch_wid=1,stretch_len=7)
         self.screen = Screen()
