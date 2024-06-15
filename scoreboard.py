@@ -11,3 +11,8 @@ class Scoreboard(Turtle):
     def create_score(self):
         self.write(f"{self.score}", align='center',font=('Times',50,'bold'))
 
+    def score_up(self):
+        self.score += 1
+        self.clear()
+        self.write(f"{self.score}", align='center',font=('Times',50,'bold'))
+

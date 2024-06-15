@@ -23,16 +23,16 @@ class Paddles(Turtle):
             self.parts.append(new_part)
 
     def move_up(self):
-        if self.parts[0].heading != 90:
+        if self.parts[0].heading != 90 and self.parts[0].ycor() < 305:
             for part in self.parts:
                 part.setheading(90)
                 part.forward(10)
             self.screen.update()
 
     def move_down(self):
-        if self.parts[0].heading != 270:
+        if self.parts[0].heading != 270 and self.parts[-1].ycor() > -300:
             for part in self.parts:
                 part.setheading(270)
-                part.forward(10)
+                part.forward(20)
             self.screen.update()
 
